@@ -1,0 +1,40 @@
+# Compiled binaries
+*.exe
+*.out
+*.o
+*.obj
+
+# Build folders
+build/
+bin/
+debug/
+Debug/
+release/
+Release/
+
+# Qt-specific
+*.pro.user
+*.pro.user.*
+*.qmake.stash
+Makefile
+Makefile.*
+*.autosave
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+object_script.*.release
+object_script.*.debug
+*.qm
+
+# Qt Creator build directories
+build-*/
+
+# IDE/editor junk
+.vscode/
+*.suo
+*.user
+
+# OS junk
+.DS_Store
+Thumbs.db
