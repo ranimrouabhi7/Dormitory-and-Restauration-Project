@@ -1,7 +1,6 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 #include <string>
-#include "dorm.h"
 #include "room.h"
 /*
 ID
@@ -25,13 +24,15 @@ private :
     std::string dormitory_name;
     int room_number; 
 public :
-    student(int,std::string,int,bool); // ptrs are null initially
+    student(int,std::string,int,bool,std::string,int); // ptrs are null initially
     
     // setters & getters
     void set_ID(int);
     void set_Fname(std::string);
     void set_AYear(int);
     void set_accomondation_status(bool);
+    void set_dormitory(std::string);
+    void set_room(int);
     int get_ID();
     std::string get_Fname();
     int get_AYear();

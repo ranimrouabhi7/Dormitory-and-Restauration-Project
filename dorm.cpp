@@ -23,6 +23,15 @@ void dormitory::set_capacity(int cap)
     throw ; // invalid input exception
 }
 
+void dormitory::set_rooms(int cap)
+{
+    rooms = new room[cap];
+    for( int i = 0; i < cap; i++ )
+    {
+        rooms[i].set_room_nb(i+1);
+        rooms[i].set_capacity(rooms_capacity);
+    }
+}
     
 int dormitory::get_capacity(){ return capacity; }
     

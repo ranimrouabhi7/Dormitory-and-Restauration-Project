@@ -20,6 +20,7 @@ private :
     std::string dorm_name;
     int capacity;
     int available_rooms; 
+    int rooms_capacity;
     
     // composition
     restaurant restau;
@@ -39,6 +40,9 @@ public :
 
     // methods 
     void add_student(student);
+
+    // destructor
+    ~dormitory(){ delete[] rooms; }
 };
 
 #endif
