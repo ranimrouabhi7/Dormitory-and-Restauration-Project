@@ -19,22 +19,26 @@ class dormitory
 private :
     std::string dorm_name;
     int capacity;
-    int available_rooms; // = capacity - nb of students (the size of the vector of students)
+    int available_rooms; 
     
     // composition
     restaurant restau;
     room* rooms; // array
-    std::vector <student> students; 
+    std::vector <student> students;
+    
+    int get_available_rooms(); // rooms that are not fully occupied
 public :
     dormitory(int,std::string);
 
     // setters and getters
     void set_dorm_name(std::string);
     void set_capacity(int);
+    void set_rooms(int);
     std::string get_dorm_name();
     int get_capacity();
-    int get_available_rooms();
-    room* get_room(int); 
+
+    // methods 
+    void add_student(student);
 };
 
 #endif

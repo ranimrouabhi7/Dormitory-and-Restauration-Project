@@ -22,8 +22,8 @@ private :
     std::string FullName;
     int AcademicYear;
     bool is_residant;
-    dormitory* dorm; // ptr to the dorm of the student
-    room* room; // ptr to its room 
+    std::string dormitory_name;
+    int room_number; 
 public :
     student(int,std::string,int,bool); // ptrs are null initially
     
@@ -36,9 +36,8 @@ public :
     std::string get_Fname();
     int get_AYear();
     bool get_accomondation_status();
-
-    void assign_to_dorm(); // if residant, we assign the pointer
-    void assign_to_room(int); // we check here, we assign the pointer 
+    std::string get_dormitory();
+    int get_room();
 
     // display
     void display_info();

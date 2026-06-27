@@ -35,14 +35,9 @@ int student::get_AYear(){ return AcademicYear; }
     
 bool student::get_accomondation_status(){ return is_residant; }
 
-void student::assign_to_dorm(){} //*****
+string student::get_dormitory(){ return dormitory_name; }
     
-void student::assign_to_room(int roomnb)
-{
-    if(dorm->get_room(roomnb)->is_fully_occupied()) throw; // invalid assignment exception
-    room = dorm->get_room(roomnb);
-    dorm->get_room(roomnb)->increase_nb();
-}
+int student::get_room(){ return room_number; }
 
 void student::display_info()
 {
@@ -51,7 +46,7 @@ void student::display_info()
         << "Academic Year: " << AcademicYear << "\n";
     if ( is_residant )
     {
-        cout << "Dormitory: " << dorm->get_dorm_name() << "\n"
-            << "Room: " << room->get_room_nb();
+        cout << "Dormitory: " << dormitory_name << "\n"
+            << "Room: " << room_number;
     }
 }

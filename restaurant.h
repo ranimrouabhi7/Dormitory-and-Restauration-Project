@@ -15,7 +15,7 @@ struct day
     std::vector<std::string> breackfast;
     std::vector<std::string> launch;
     std::vector<std::string> dinner;
-    void vector_display(vector <string>);
+    void vector_display(std::vector <string>);
 };
 
 class restaurant
