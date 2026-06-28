@@ -68,7 +68,7 @@ int dormitory::get_available_rooms()
 int dormitory::get_rooms_capacity(){ return rooms_capacity; }
 
 
-void dormitory::add_student(student stud, int room)
+void dormitory::add_student(student& stud, int room)
 {
     if( get_available_rooms() == 0) throw ; // invalid assignment exception
     if( (rooms + room)->is_fully_occupied() ) throw ; // the same 
@@ -78,7 +78,7 @@ void dormitory::add_student(student stud, int room)
     stud.set_room(room);
 }
 
-void dormitory::remove_student(student stud, int room)
+void dormitory::remove_student(student& stud, int room)
 {
     for(int i = 0; i < students.size(); i++)
     { if(students[i] == stud) 

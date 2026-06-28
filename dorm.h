@@ -41,8 +41,8 @@ public :
     int get_rooms_capacity();
 
     // methods 
-    void add_student(student,int);
-    void remove_student(student,int);
+    void add_student(student&,int);
+    void remove_student(student&,int);
 
     // destructor
     ~dormitory(){ delete[] rooms; }

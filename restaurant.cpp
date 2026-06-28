@@ -3,6 +3,16 @@
 
 using namespace std;
 
+restaurant::restaurant()
+{
+    week_days[0].day = "Sunday";
+    week_days[1].day = "Monday";
+    week_days[0].day = "Tuesday";
+    week_days[0].day = "Wednesday";
+    week_days[0].day = "Thursday";
+    week_days[0].day = "Friday";
+    week_days[0].day = "Saturday";
+}
 
 void restaurant::add_to_breakfast(string DAY, string meal)
 {
@@ -79,7 +89,7 @@ void restaurant::remove_from_dinner(string DAY, string meal)
     {
         if(DAY == week_days[i].day)
         {
-            for(int j = 0; j < sizeof(week_days[i].dinner); j++)
+            for(int j = 0; j < week_days[i].dinner.size(); j++)
             {
                 if(meal == week_days[i].dinner[j]) week_days[i].dinner.erase(week_days[i].dinner.begin() + j);
                 return;
