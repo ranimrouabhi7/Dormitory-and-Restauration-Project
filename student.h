@@ -24,7 +24,7 @@ private :
     std::string dormitory_name;
     int room_number; 
 public :
-    student(int,std::string,int,bool,std::string,int); // ptrs are null initially
+    student(int,std::string,int,bool); 
     
     // setters & getters
     void set_ID(int);
@@ -42,6 +42,9 @@ public :
 
     // display
     void display_info();
+
+    // == oprator overloading
+    bool operator == (student);
 };
 
 #endif

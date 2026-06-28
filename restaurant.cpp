@@ -3,8 +3,7 @@
 
 using namespace std;
 
-restaurant::restaurant(day[]){}
-    
+
 void restaurant::add_to_breakfast(string DAY, string meal)
 {
     for(int i = 0; i < 7; i++)
@@ -16,7 +15,7 @@ void restaurant::add_to_breakfast(string DAY, string meal)
         }
     }
 }
-    
+
 void restaurant::remove_from_breakfast(string DAY, string meal)
 {
     for(int i = 0; i < 7; i++)
@@ -33,7 +32,7 @@ void restaurant::remove_from_breakfast(string DAY, string meal)
     throw ; // meal not in breakfast exception
 
 }
-    
+
 void restaurant::add_to_launch(string DAY, string meal)
 {
     for(int i = 0; i < 7; i++)
@@ -45,7 +44,7 @@ void restaurant::add_to_launch(string DAY, string meal)
         }
     }
 }
-    
+
 void restaurant::remove_from_launch(string DAY, string meal)
 {
     for(int i = 0; i < 7; i++)

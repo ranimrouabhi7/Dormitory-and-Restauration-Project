@@ -3,12 +3,17 @@
 
 using namespace std;
 
-dormitory::dormitory(int cap, string name)
+dormitory::dormitory(int cap, string name, int room_cap)
 {
     set_dorm_name(name);
     set_capacity(cap);
+    set_rooms_capacity(room_cap);
     available_rooms = cap;
     rooms = new room[cap];
+    for(int i = 0; i < cap; i++)
+    {
+        rooms[i].set_room_nb(i + 1);
+    }
 }
 
 void dormitory::set_dorm_name(string name){ dorm_name = name; }
@@ -21,6 +26,19 @@ void dormitory::set_capacity(int cap)
         return;
     }
     throw ; // invalid input exception
+}
+
+void dormitory::set_rooms_capacity(int room_cap)
+{
+    if(room_cap > 0) 
+    {   
+        rooms_capacity = room_cap;
+    }
+    else throw ; // invalid input exception
+    for(int i = 0; i < capacity; i++)
+    {
+        rooms[i].set_capacity(room_cap);
+    }
 }
 
 void dormitory::set_rooms(int cap)
@@ -47,11 +65,30 @@ int dormitory::get_available_rooms()
     return available;
 }
 
+int dormitory::get_rooms_capacity(){ return rooms_capacity; }
 
-void dormitory::add_student(student stud)
+
+void dormitory::add_student(student stud, int room)
 {
     if( get_available_rooms() == 0) throw ; // invalid assignment exception
-    if( (rooms + stud.get_room())->is_fully_occupied() ) throw ; // the same 
-    students.insert(students.begin() + stud.get_room(), stud);
-    (rooms + stud.get_room())->increase_nb();
+    if( (rooms + room)->is_fully_occupied() ) throw ; // the same 
+    students.insert(students.begin() + room, stud);
+    (rooms + room)->increase_nb();
+    stud.set_dormitory(dorm_name);
+    stud.set_room(room);
+}
+
+void dormitory::remove_student(student stud, int room)
+{
+    for(int i = 0; i < students.size(); i++)
+    { if(students[i] == stud) 
+        { 
+            students.erase(students.begin() + i); 
+            stud.set_accomondation_status(false);
+            stud.set_dormitory("NOTHING");
+            stud.set_room(0);
+            return; 
+        } 
+    }
+    throw ; // student not found exception
 }

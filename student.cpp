@@ -3,14 +3,14 @@
 
 using namespace std;
 
-student::student(int id, string fname, int acyear, bool is_res, string dorm, int roomnb)
+student::student(int id, string fname, int acyear, bool is_res)
 {
     set_ID(id);
     set_Fname(fname);
     set_AYear(acyear);
     set_accomondation_status(is_res);
-    set_dormitory(dorm);
-    set_room(roomnb);
+    set_dormitory("NOTHING");
+    set_room(0);
 }
 
 void student::set_ID(int id) // id should contain exactly 4dgs
@@ -55,4 +55,14 @@ void student::display_info()
         cout << "Dormitory: " << dormitory_name << "\n"
             << "Room: " << room_number;
     }
+}
+
+bool student::operator == (student stud)
+{
+    if(ID != stud.ID) return false;
+    if(FullName != stud.FullName) return false; 
+    if(AcademicYear != stud.AcademicYear) return false;
+    if(is_residant != stud.is_residant) return false;
+    if(room_number != stud.room_number) return false;
+    return true;
 }
