@@ -7,9 +7,9 @@ dormitory::dormitory(int cap, string name, int room_cap)
 {
     set_dorm_name(name);
     set_capacity(cap);
-    set_rooms_capacity(room_cap);
     available_rooms = cap;
     rooms = new room[cap];
+    set_rooms_capacity(room_cap);
     for(int i = 0; i < cap; i++)
     {
         rooms[i].set_room_nb(i + 1);

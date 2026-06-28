@@ -7,11 +7,11 @@ restaurant::restaurant()
 {
     week_days[0].day = "Sunday";
     week_days[1].day = "Monday";
-    week_days[0].day = "Tuesday";
-    week_days[0].day = "Wednesday";
-    week_days[0].day = "Thursday";
-    week_days[0].day = "Friday";
-    week_days[0].day = "Saturday";
+    week_days[2].day = "Tuesday";
+    week_days[3].day = "Wednesday";
+    week_days[4].day = "Thursday";
+    week_days[5].day = "Friday";
+    week_days[6].day = "Saturday";
 }
 
 void restaurant::add_to_breakfast(string DAY, string meal)
@@ -32,7 +32,7 @@ void restaurant::remove_from_breakfast(string DAY, string meal)
     {
         if(DAY == week_days[i].day)
         {
-            for(int j = 0; j < sizeof(week_days[i].breackfast); j++)
+            for(int j = 0; j < week_days[i].breackfast.size(); j++)
             {
                 if(meal == week_days[i].breackfast[j]) week_days[i].breackfast.erase(week_days[i].breackfast.begin() + j);
                 return;
