@@ -3,7 +3,7 @@
 
 using namespace std;
 
-restaurant::restaurant()
+restaurant::restaurant(int)
 {
     week_days[0].day = "Sunday";
     week_days[1].day = "Monday";
@@ -61,7 +61,7 @@ void restaurant::remove_from_launch(string DAY, string meal)
     {
         if(DAY == week_days[i].day)
         {
-            for(int j = 0; j < sizeof(week_days[i].launch); j++)
+            for(int j = 0; j < week_days[i].launch.size(); j++)
             {
                 if(meal == week_days[i].launch[j]) week_days[i].launch.erase(week_days[i].launch.begin() + j);
                 return;

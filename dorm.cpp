@@ -10,10 +10,7 @@ dormitory::dormitory(int cap, string name, int room_cap)
     available_rooms = cap;
     rooms = new room[cap];
     set_rooms_capacity(room_cap);
-    for(int i = 0; i < cap; i++)
-    {
-        rooms[i].set_room_nb(i + 1);
-    }
+    set_rooms(cap,room_cap);
 }
 
 void dormitory::set_dorm_name(string name){ dorm_name = name; }
@@ -41,13 +38,13 @@ void dormitory::set_rooms_capacity(int room_cap)
     }
 }
 
-void dormitory::set_rooms(int cap)
+void dormitory::set_rooms(int cap, int rooms_cap)
 {
     rooms = new room[cap];
     for( int i = 0; i < cap; i++ )
     {
         rooms[i].set_room_nb(i+1);
-        rooms[i].set_capacity(rooms_capacity);
+        rooms[i].set_capacity(rooms_cap);
     }
 }
     

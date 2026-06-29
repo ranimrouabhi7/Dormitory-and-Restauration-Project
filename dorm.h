@@ -34,7 +34,7 @@ public :
     // setters and getters
     void set_dorm_name(std::string);
     void set_capacity(int);
-    void set_rooms(int);
+    void set_rooms(int,int);
     void set_rooms_capacity(int);
     std::string get_dorm_name();
     int get_capacity();
