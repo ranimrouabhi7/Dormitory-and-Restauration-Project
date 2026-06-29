@@ -9,8 +9,12 @@ student::student(int id, string fname, int acyear, bool is_res)
     set_Fname(fname);
     set_AYear(acyear);
     set_accomondation_status(is_res);
-    set_dormitory("NOTHING");
-    set_room(0);
+    if(is_residant == false)
+    {
+        set_dormitory("NOTHING"); set_room(0);
+    }
+    else 
+    { set_dormitory("NOT SET YET"); set_room(0);}
 }
 
 void student::set_ID(int id) // id should contain exactly 4dgs
