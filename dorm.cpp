@@ -3,12 +3,11 @@
 
 using namespace std;
 
-dormitory::dormitory(int cap, string name, int room_cap)
+dormitory::dormitory(int cap, string name, int room_cap) : restau(0)
 {
     set_dorm_name(name);
     set_capacity(cap);
     available_rooms = cap;
-    rooms = new room[cap];
     set_rooms_capacity(room_cap);
     set_rooms(cap,room_cap);
 }
@@ -32,10 +31,6 @@ void dormitory::set_rooms_capacity(int room_cap)
         rooms_capacity = room_cap;
     }
     else throw ; // invalid input exception
-    for(int i = 0; i < capacity; i++)
-    {
-        rooms[i].set_capacity(room_cap);
-    }
 }
 
 void dormitory::set_rooms(int cap, int rooms_cap)

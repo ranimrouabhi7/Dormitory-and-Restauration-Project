@@ -16,7 +16,6 @@ private :
     int capacity;
     int nb_of_students; // increased when assigned
 public :
-    room() = default;
     room(int,int);
     
     // setters & getters
