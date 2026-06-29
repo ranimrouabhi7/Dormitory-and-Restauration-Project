@@ -16,7 +16,7 @@ private :
     int capacity;
     int nb_of_students; // increased when assigned
 public :
-    room() : room_nb(0), capacity(0), nb_of_students(0) {}; 
+    room() : room_nb(0), capacity(1), nb_of_students(0) {}; 
     room(int,int);
     
     // setters & getters

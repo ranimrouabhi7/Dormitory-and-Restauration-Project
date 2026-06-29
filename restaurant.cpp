@@ -3,7 +3,7 @@
 
 using namespace std;
 
-restaurant::restaurant(int)
+restaurant::restaurant()
 {
     week_days[0].day = "Sunday";
     week_days[1].day = "Monday";
