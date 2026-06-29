@@ -34,8 +34,11 @@ void restaurant::remove_from_breakfast(string DAY, string meal)
         {
             for(int j = 0; j < week_days[i].breackfast.size(); j++)
             {
-                if(meal == week_days[i].breackfast[j]) week_days[i].breackfast.erase(week_days[i].breackfast.begin() + j);
-                return;
+                if(meal == week_days[i].breackfast[j]) 
+                {
+                    week_days[i].breackfast.erase(week_days[i].breackfast.begin() + j);
+                    return;
+                }
             }
         }
     }
@@ -63,8 +66,11 @@ void restaurant::remove_from_launch(string DAY, string meal)
         {
             for(int j = 0; j < week_days[i].launch.size(); j++)
             {
-                if(meal == week_days[i].launch[j]) week_days[i].launch.erase(week_days[i].launch.begin() + j);
-                return;
+                if(meal == week_days[i].launch[j]) 
+                {
+                    week_days[i].launch.erase(week_days[i].launch.begin() + j);
+                    return;
+                }
             }
         }
     }
@@ -91,8 +97,11 @@ void restaurant::remove_from_dinner(string DAY, string meal)
         {
             for(int j = 0; j < week_days[i].dinner.size(); j++)
             {
-                if(meal == week_days[i].dinner[j]) week_days[i].dinner.erase(week_days[i].dinner.begin() + j);
-                return;
+                if(meal == week_days[i].dinner[j]) 
+                {
+                    week_days[i].dinner.erase(week_days[i].dinner.begin() + j);
+                    return;
+                }
             }
         }
     }
@@ -109,7 +118,7 @@ void restaurant::display()
     
     for(int i = 0; i < 7; i++)
     {
-        for(char c : week_days[i].day) cout << toupper(c);
+        for(char c : week_days[i].day) cout << (char)toupper(c);
         cout << "menu: " << '\n'
             << "breackfast: " << '\n';
         week_days[i].vector_display(week_days[i].breackfast);
