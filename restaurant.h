@@ -23,8 +23,7 @@ class restaurant
 private :
     day week_days[7];
 public :
-    restaurant() = default;
-    restaurant(int);
+    restaurant();
     void add_to_breakfast(std::string,std::string); // specify the date and the meal
     void remove_from_breakfast(std::string,std::string); // we have to handle the exception of the meal not in the menu
     void add_to_launch(std::string,std::string);

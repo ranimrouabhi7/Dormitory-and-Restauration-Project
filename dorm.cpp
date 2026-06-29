@@ -3,7 +3,7 @@
 
 using namespace std;
 
-dormitory::dormitory(int cap, string name, int room_cap) : restau(0)
+dormitory::dormitory(int cap, string name, int room_cap) : restau()
 {
     set_dorm_name(name);
     set_capacity(cap);
