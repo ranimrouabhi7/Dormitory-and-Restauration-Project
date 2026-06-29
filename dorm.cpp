@@ -64,6 +64,7 @@ void dormitory::add_student(student& stud, int room)
 {
     if( get_available_rooms() == 0) throw ; // invalid assignment exception
     if( (rooms + room)->is_fully_occupied() ) throw ; // the same 
+    if( room == 0 ) throw ; // invalid room
     students.insert(students.begin() + room, stud);
     (rooms + room)->increase_nb();
     stud.set_dormitory(dorm_name);
