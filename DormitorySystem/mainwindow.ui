@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>-5</x>
+      <y>-9</y>
+      <width>171</width>
+      <height>481</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Students management</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Resto management</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Dormitory management</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>0</y>
+      <width>631</width>
+      <height>461</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="SrudnetsManagement">
+     <widget class="QTableWidget" name="StudentsTable">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>110</y>
+        <width>601</width>
+        <height>351</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Full Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Academic Year</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Accomondation Status</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Dormitory</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Room</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="AddStudentBtn">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>70</y>
+        <width>101</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add a student</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="RestoManagement"/>
+    <widget class="QWidget" name="DormitoryMAnagement">
+     <widget class="QTableWidget" name="Dorm_table">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>110</y>
+        <width>601</width>
+        <height>351</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>Dormiroty</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Capacity</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Number of students/room</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="AddDormBtn">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>70</y>
+        <width>101</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add a dormitory</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

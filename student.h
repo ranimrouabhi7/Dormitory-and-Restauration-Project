@@ -2,17 +2,6 @@
 #define STUDENT_H
 #include <string>
 #include "room.h"
-/*
-ID
-FullName
-AcademicYear
-Dorm => add it to the students vector of the dorm
-Room => assign it to the room 
-2 vectors 1 for students and 1 for rooms and the index of the student is the same as the index of its room in that dorm
-if a student is not a residant he wont be in the vector of any dorm 
-
-Display
-*/
 
 class student
 {
@@ -20,31 +9,45 @@ private :
     int ID;
     std::string FullName;
     int AcademicYear;
-    bool is_residant;
-    std::string dormitory_name;
-    int room_number; 
 public :
-    student(int,std::string,int,bool); 
-    
+    student(int,std::string,int);
     // setters & getters
-    void set_ID(int);
-    void set_Fname(std::string);
-    void set_AYear(int);
-    void set_accomondation_status(bool);
-    void set_dormitory(std::string);
-    void set_room(int);
-    int get_ID();
-    std::string get_Fname();
-    int get_AYear();
-    bool get_accomondation_status();
-    std::string get_dormitory();
-    int get_room();
+    virtual void set_ID(int);
+    virtual void set_Fname(std::string);
+    virtual void set_AYear(int);
+    virtual int get_ID() const;
+    virtual std::string get_Fname() const;
+    virtual int get_AYear() const;
 
     // display
-    void display_info();
+    virtual void display_info() const; 
 
     // == oprator overloading
-    bool operator == (student);
+    virtual bool operator == (const student&) const;
+
+    // destructor
+    virtual ~student() {};
+};
+
+class resident_student : public student
+{
+private :
+    std::string dorm_name;
+    int room;
+public : 
+    resident_student(int,std::string,int,std::string,int);
+
+    // setters
+    void set_dormitory(std::string);
+    void set_room(int);
+
+    // getters
+    std::string get_dormitory() const;
+    int get_room() const;
+
+    // overrided functions
+    void display_info() const override;
+    bool operator == (const student&) const override;
 };
 
 #endif

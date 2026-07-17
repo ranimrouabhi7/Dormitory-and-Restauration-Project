@@ -12,6 +12,20 @@ dormitory::dormitory(int cap, string name, int room_cap) : restau()
     set_rooms(cap,room_cap);
 }
 
+dormitory::dormitory(const dormitory& other)
+{
+    dorm_name = other.dorm_name;
+    capacity = other.capacity;
+    rooms_capacity = other.rooms_capacity;
+    available_rooms = other.available_rooms;
+    students = other.students;
+    restau = other.restau;
+
+    rooms = new room[capacity];
+    for(int i = 0; i < capacity; i++)
+        rooms[i] = other.rooms[i];
+}
+
 void dormitory::set_dorm_name(string name){ dorm_name = name; }
     
 void dormitory::set_capacity(int cap)
@@ -71,9 +85,9 @@ void dormitory::add_student(student& stud, int room)
     stud.set_room(room);
 }
 
-void dormitory::remove_student(student& stud, int room)
+void dormitory::remove_student(student& stud)
 {
-    for(int i = 0; i < students.size(); i++)
+    for(size_t i = 0; i < students.size(); i++)
     { if(students[i] == stud) 
         { 
             students.erase(students.begin() + i); 
@@ -85,3 +99,5 @@ void dormitory::remove_student(student& stud, int room)
     }
     throw ; // student not found exception
 }
+
+room* dormitory::get_rooms(){ return rooms; }

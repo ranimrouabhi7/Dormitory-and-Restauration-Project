@@ -29,6 +29,7 @@ private :
     
     int get_available_rooms(); // rooms that are not fully occupied
 public :
+    dormitory(const dormitory&);
     dormitory(int,std::string,int); // restau default constructor will run
 
     // setters and getters
@@ -39,10 +40,11 @@ public :
     std::string get_dorm_name();
     int get_capacity();
     int get_rooms_capacity();
+    room* get_rooms();
 
     // methods 
     void add_student(student&,int);
-    void remove_student(student&,int);
+    void remove_student(student&);
 
     // destructor
     ~dormitory(){ delete[] rooms; }

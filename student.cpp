@@ -3,19 +3,13 @@
 
 using namespace std;
 
-student::student(int id, string fname, int acyear, bool is_res)
+student::student(int id, string fname, int acyear) // is not resident
 {
     set_ID(id);
     set_Fname(fname);
     set_AYear(acyear);
-    set_accomondation_status(is_res);
-    if(is_residant == false)
-    {
-        set_dormitory("NOTHING"); set_room(0);
-    }
-    else 
-    { set_dormitory("NOT SET YET"); set_room(0);}
 }
+
 
 void student::set_ID(int id) // id should contain exactly 4dgs
 {
@@ -31,42 +25,44 @@ void student::set_AYear(int year)
     AcademicYear = ( year <= 5 ? year : 1 );
 }
     
-void student::set_accomondation_status(bool residant){ is_residant = residant; }
+int student::get_ID() const { return ID; }
+    
+string student::get_Fname() const { return FullName; }
+    
+int student::get_AYear() const { return AcademicYear; }
 
-void student::set_dormitory(string dorm){ dormitory_name = dorm; }
+string resident_student::get_dormitory() const { return dorm_name; }
     
-void student::set_room(int roomnb){ room_number = roomnb; }
-    
-int student::get_ID(){ return ID; }
-    
-string student::get_Fname(){ return FullName; }
-    
-int student::get_AYear(){ return AcademicYear; }
-    
-bool student::get_accomondation_status(){ return is_residant; }
+int resident_student::get_room() const { return room; }
 
-string student::get_dormitory(){ return dormitory_name; }
-    
-int student::get_room(){ return room_number; }
-
-void student::display_info()
+void student::display_info() const
 {
     cout << "student ID: " << ID << "\n"
         << "student FullName: " << FullName << "\n"
         << "Academic Year: " << AcademicYear << "\n";
-    if ( is_residant )
-    {
-        cout << "Dormitory: " << dormitory_name << "\n"
-            << "Room: " << room_number;
-    }
 }
 
-bool student::operator == (student stud)
+void resident_student::display_info() const
+{
+    student::display_info();
+    cout << "dorm name: " << dorm_name << "\n"
+        << "room number: " << room << "\n";
+}
+
+bool student::operator == (const student& stud) const
 {
     if(ID != stud.ID) return false;
     if(FullName != stud.FullName) return false; 
     if(AcademicYear != stud.AcademicYear) return false;
-    if(is_residant != stud.is_residant) return false;
-    if(room_number != stud.room_number) return false;
+    return true;
+}
+
+bool resident_student:: operator == (const student& stud) const 
+{
+    if( ! this -> student::operator == (stud)) return false;
+    const resident_student* res = dynamic_cast <const resident_student*> (&stud);
+    if(res == nullptr) return false;
+    if(dorm_name != res->dorm_name) return false; 
+    if(room != res->room) return false;
     return true;
 }
