@@ -31,30 +31,40 @@ string student::get_Fname() const { return FullName; }
     
 int student::get_AYear() const { return AcademicYear; }
 
-string resident_student::get_dormitory() const { return dorm_name; }
-    
-int resident_student::get_room() const { return room; }
-
 void student::display_info() const
 {
     cout << "student ID: " << ID << "\n"
-        << "student FullName: " << FullName << "\n"
-        << "Academic Year: " << AcademicYear << "\n";
+         << "student FullName: " << FullName << "\n"
+         << "Academic Year: " << AcademicYear << "\n";
 }
+
+bool student::operator == (const student& stud) const
+{
+    if(ID != stud.ID) return false;
+    if(FullName != stud.FullName) return false;
+    if(AcademicYear != stud.AcademicYear) return false;
+    return true;
+}
+
+resident_student::resident_student(int id, string fname, int acyear, string dorm, int room): student(id,fname,acyear)
+{
+    set_dormitory(dorm);
+    set_room(room);
+}
+
+void resident_student::set_dormitory(string dorm) { dorm_name = dorm;}
+
+void resident_student::set_room(int room) { this->room = room; }
+
+string resident_student::get_dormitory() const { return dorm_name; }
+    
+int resident_student::get_room() const { return room; }
 
 void resident_student::display_info() const
 {
     student::display_info();
     cout << "dorm name: " << dorm_name << "\n"
         << "room number: " << room << "\n";
-}
-
-bool student::operator == (const student& stud) const
-{
-    if(ID != stud.ID) return false;
-    if(FullName != stud.FullName) return false; 
-    if(AcademicYear != stud.AcademicYear) return false;
-    return true;
 }
 
 bool resident_student:: operator == (const student& stud) const 

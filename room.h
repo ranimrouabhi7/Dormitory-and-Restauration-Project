@@ -1,7 +1,5 @@
 #ifndef ROOM_H
 #define ROOM_H
-#include <vector>
-
 /*
 an array of room numbers (a ptr/dynamic arr) 
 

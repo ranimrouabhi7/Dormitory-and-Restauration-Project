@@ -25,11 +25,11 @@ private :
     // composition
     restaurant restau;
     room* rooms; // array
-    std::vector <student> students;
+    std::vector <resident_student> students;
     
     int get_available_rooms(); // rooms that are not fully occupied
 public :
-    dormitory(const dormitory&);
+    dormitory(const dormitory&); // necessary for the vector of dorms (reallocation process and ptr data member)
     dormitory(int,std::string,int); // restau default constructor will run
 
     // setters and getters
@@ -42,9 +42,9 @@ public :
     int get_rooms_capacity();
     room* get_rooms();
 
-    // methods 
-    void add_student(student&,int);
-    void remove_student(student&);
+    // methods
+    void add_student(resident_student&,int);
+    void remove_student(resident_student&);
 
     // destructor
     ~dormitory(){ delete[] rooms; }

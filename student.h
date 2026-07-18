@@ -12,12 +12,12 @@ private :
 public :
     student(int,std::string,int);
     // setters & getters
-    virtual void set_ID(int);
-    virtual void set_Fname(std::string);
-    virtual void set_AYear(int);
-    virtual int get_ID() const;
-    virtual std::string get_Fname() const;
-    virtual int get_AYear() const;
+    void set_ID(int);
+    void set_Fname(std::string);
+    void set_AYear(int);
+    int get_ID() const;
+    std::string get_Fname() const;
+    int get_AYear() const;
 
     // display
     virtual void display_info() const; 

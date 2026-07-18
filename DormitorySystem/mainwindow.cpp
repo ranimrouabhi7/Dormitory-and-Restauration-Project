@@ -26,41 +26,46 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_AddStudentBtn_clicked()
 {
-    DialogAddStud dialog(this);
-    if( dialog.exec() == QDialog::Accepted )
+    DialogAddStud dialog(this); // create teh dialog window object
+    if ( dialog.exec() == QDialog::Accepted ) // when the dialg finishes
     {
-        student stud (dialog.get_ID(),
-                     dialog.get_FullName().toStdString(),
-                     dialog.get_Acc_Year());
-
-        int row = ui->Dorm_table->rowCount();
+        int row = ui->StudentsTable->rowCount();
 
         ui->StudentsTable->insertRow(row);
-        ui->StudentsTable->setItem(row, 0, new QTableWidgetItem(QString::number(stud.get_ID())));
-        ui->StudentsTable->setItem(row, 1, new QTableWidgetItem(QString::fromStdString(stud.get_Fname())));
-        ui->StudentsTable->setItem(row, 2, new QTableWidgetItem(QString::number(stud.get_AYear())));
+        ui->StudentsTable->setItem(row, 0, new QTableWidgetItem(QString::number(dialog.get_ID())));
+        ui->StudentsTable->setItem(row, 1, new QTableWidgetItem(dialog.get_FullName()));
+        ui->StudentsTable->setItem(row, 2, new QTableWidgetItem(QString::number(dialog.get_Acc_Year())));
 
-        if( dialog.get_Accomondation_Status() )
+        if ( dialog.get_Accomondation_Status() )
         {
             DormitoryDialog dormassignment(this,dorms);
 
-            if( dormassignment.exec() == QDialog::Accepted )
+            if ( dormassignment.exec() == QDialog::Accepted )
             {
+                resident_student res_stud (dialog.get_ID(),
+                                          dialog.get_FullName().toStdString(),
+                                          dialog.get_Acc_Year(),
+                                          dormassignment.get_Dorm().toStdString(),
+                                          dormassignment.get_Room());
+
                 for ( size_t i = 0 ; i < dorms.size(); i++ )
                 {
-                    if( dormassignment.get_Dorm() == (dorms.begin() + i)->get_dorm_name() )
+                    if( dormassignment.get_Dorm().toStdString() == (dorms.begin() + i)->get_dorm_name() )
                     {
-                        (dorms.begin() + i)->add_student( stud, dormassignment.get_Room() );
+                        (dorms.begin() + i)->add_student( res_stud, dormassignment.get_Room() ); // adding a student to the vector students
                         break;
                     }
                 }
                 ui->StudentsTable->setItem(row, 3, new QTableWidgetItem(QString::fromStdString("resident")));
-                ui->StudentsTable->setItem(row, 4, new QTableWidgetItem(QString::fromStdString(stud.get_dormitory())));
-                ui->StudentsTable->setItem(row, 5, new QTableWidgetItem(QString::number(stud.get_room())));
+                ui->StudentsTable->setItem(row, 4, new QTableWidgetItem(QString::fromStdString(res_stud.get_dormitory())));
+                ui->StudentsTable->setItem(row, 5, new QTableWidgetItem(QString::number(res_stud.get_room())));
             }
         }
         else
         {
+            student stud (dialog.get_ID(),
+                         dialog.get_FullName().toStdString(),
+                         dialog.get_Acc_Year());
             ui->StudentsTable->setItem(row, 3, new QTableWidgetItem(QString::fromStdString("not resident")));
             ui->StudentsTable->setItem(row, 4, new QTableWidgetItem(QString::fromStdString("-")));
             ui->StudentsTable->setItem(row, 5, new QTableWidgetItem(QString::fromStdString("-")));
