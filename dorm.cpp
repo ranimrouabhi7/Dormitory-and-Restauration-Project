@@ -74,24 +74,21 @@ int dormitory::get_available_rooms()
 int dormitory::get_rooms_capacity(){ return rooms_capacity; }
 
 
-void dormitory::add_student(student& stud, int room)
+void dormitory::add_student(resident_student& stud, int room)
 {
     if( get_available_rooms() == 0) throw ; // invalid assignment exception
     if( (rooms + room)->is_fully_occupied() ) throw ; // the same 
     if( room == 0 ) throw ; // invalid room
     students.insert(students.begin() + room, stud);
     (rooms + room)->increase_nb();
-    stud.set_dormitory(dorm_name);
-    stud.set_room(room);
 }
 
-void dormitory::remove_student(student& stud)
+void dormitory::remove_student(resident_student& stud)
 {
     for(size_t i = 0; i < students.size(); i++)
     { if(students[i] == stud) 
         { 
             students.erase(students.begin() + i); 
-            stud.set_accomondation_status(false);
             stud.set_dormitory("NOTHING");
             stud.set_room(0);
             return; 

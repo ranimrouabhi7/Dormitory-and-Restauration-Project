@@ -57,8 +57,8 @@ void MainWindow::on_AddStudentBtn_clicked()
                     }
                 }
                 ui->StudentsTable->setItem(row, 3, new QTableWidgetItem(QString::fromStdString("resident")));
-                ui->StudentsTable->setItem(row, 4, new QTableWidgetItem(QString::fromStdString(res_stud.get_dormitory())));
-                ui->StudentsTable->setItem(row, 5, new QTableWidgetItem(QString::number(res_stud.get_room())));
+                ui->StudentsTable->setItem(row, 4, new QTableWidgetItem(dormassignment.get_Dorm()));
+                ui->StudentsTable->setItem(row, 5, new QTableWidgetItem(QString::number(dormassignment.get_Room())));
             }
         }
         else
@@ -66,6 +66,7 @@ void MainWindow::on_AddStudentBtn_clicked()
             student stud (dialog.get_ID(),
                          dialog.get_FullName().toStdString(),
                          dialog.get_Acc_Year());
+
             ui->StudentsTable->setItem(row, 3, new QTableWidgetItem(QString::fromStdString("not resident")));
             ui->StudentsTable->setItem(row, 4, new QTableWidgetItem(QString::fromStdString("-")));
             ui->StudentsTable->setItem(row, 5, new QTableWidgetItem(QString::fromStdString("-")));
@@ -77,6 +78,7 @@ void MainWindow::on_AddStudentBtn_clicked()
 void MainWindow::on_AddDormBtn_clicked()
 {
     AddDormDialog dorm(this);
+
     if( dorm.exec() == QDialog::Accepted )
     {
         dormitory dormi(dorm.get_Capacity(),

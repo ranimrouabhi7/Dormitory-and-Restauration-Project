@@ -15,7 +15,11 @@ DormitoryDialog::DormitoryDialog(QWidget *parent, std::vector<dormitory>& dorms)
     }
 
     connect(ui->DormComboBox, &QComboBox::currentTextChanged,
-            this, &DormitoryDialog::onDormSelected);
+            this, &DormitoryDialog::onDormSelected); // connsect the selection with the onDormSelected
+
+    if(!dorms.empty())
+        onDormSelected(QString::fromStdString(dorms[0].get_dorm_name())); // this is for the first dorm
+                                                                         // manually call the onDormSelected
 }
 
 DormitoryDialog::~DormitoryDialog()
@@ -25,15 +29,15 @@ DormitoryDialog::~DormitoryDialog()
 
 void DormitoryDialog::onDormSelected(const QString& dormname)
 {
-    ui->RoomComboBox->clear();
+    ui->RoomComboBox->clear(); // each time the user select another dorm clear
 
-    for ( auto& d : dorms )
+    for ( auto& d : dorms ) // search on the dorm
     {
         if( QString::fromStdString(d.get_dorm_name()) == dormname )
         {
             for( int j = 0; j < d.get_capacity(); j++)
             {
-                if( ! (d.get_rooms() + j)->is_fully_occupied() )
+                if( ! (d.get_rooms() + j)->is_fully_occupied() ) // if the room is not fully occupied add it
                 {
                     ui->RoomComboBox->addItem(QString::number( j + 1));
                 }
