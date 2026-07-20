@@ -18,7 +18,6 @@ dormitory::dormitory(const dormitory& other)
     capacity = other.capacity;
     rooms_capacity = other.rooms_capacity;
     available_rooms = other.available_rooms;
-    students = other.students;
     restau = other.restau;
 
     rooms = new room[capacity];
@@ -77,22 +76,18 @@ int dormitory::get_rooms_capacity(){ return rooms_capacity; }
 void dormitory::add_student(resident_student& stud, int room)
 {
     if( get_available_rooms() == 0) throw ; // invalid assignment exception
-    if( (rooms + room)->is_fully_occupied() ) throw ; // the same 
-    if( room == 0 ) throw ; // invalid room
-    students.insert(students.begin() + room, stud);
-    (rooms + room)->increase_nb();
+    (rooms + room)->add_a_student(stud);
+    (rooms + room - 1 )->increase_nb();
 }
 
 void dormitory::remove_student(resident_student& stud)
 {
-    for(size_t i = 0; i < students.size(); i++)
-    { if(students[i] == stud) 
-        { 
-            students.erase(students.begin() + i); 
-            stud.set_dormitory("NOTHING");
-            stud.set_room(0);
-            return; 
-        } 
+    for(size_t i = 0; i < capacity; i++)
+    {
+        if( (rooms + i)->is_resident_here(stud) )
+        {
+            (rooms + i)->remove_a_student(stud);
+        }
     }
     throw ; // student not found exception
 }

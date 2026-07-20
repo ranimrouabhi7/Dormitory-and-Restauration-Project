@@ -1,7 +1,6 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 #include <string>
-#include "room.h"
 
 class student
 {
@@ -23,7 +22,7 @@ public :
     virtual void display_info() const; 
 
     // == oprator overloading
-    virtual bool operator == (const student&) const;
+    virtual bool operator == (student&) const;
 
     // destructor
     virtual ~student() {};
@@ -47,7 +46,7 @@ public :
 
     // overrided functions
     void display_info() const override;
-    bool operator == (const student&) const override;
+    bool operator == (student&) const override;
 };
 
 #endif

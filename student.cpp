@@ -38,7 +38,7 @@ void student::display_info() const
          << "Academic Year: " << AcademicYear << "\n";
 }
 
-bool student::operator == (const student& stud) const
+bool student::operator == (student& stud) const
 {
     if(ID != stud.ID) return false;
     if(FullName != stud.FullName) return false;
@@ -67,7 +67,7 @@ void resident_student::display_info() const
         << "room number: " << room << "\n";
 }
 
-bool resident_student:: operator == (const student& stud) const 
+bool resident_student:: operator == (student& stud) const
 {
     if( ! this -> student::operator == (stud)) return false;
     const resident_student* res = dynamic_cast <const resident_student*> (&stud);

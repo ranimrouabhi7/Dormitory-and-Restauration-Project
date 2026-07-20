@@ -2,7 +2,6 @@
 #define DORM_H
 #include "restaurant.h"
 #include "room.h"
-#include "student.h"
 #include <string>
 #include <vector>
 
@@ -25,7 +24,6 @@ private :
     // composition
     restaurant restau;
     room* rooms; // array
-    std::vector <resident_student> students;
     
     int get_available_rooms(); // rooms that are not fully occupied
 public :
